@@ -1,0 +1,20 @@
+nodes:
+  - address: 3.238.240.191
+    internal_address: 172.31.75.90
+    user: ubuntu
+    role: [controlplane, worker, etcd]
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
+
+ssh_key_path: ~/.ssh/mustafa-rancher.key
+
+# Required for external TLS termination with
+# ingress-nginx v0.22+
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"
